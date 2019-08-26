@@ -1,11 +1,15 @@
 "use strict";
 
 require("dotenv").config();
-const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
+const express = require("express");
 const fs = require("fs");
+
 const app = express();
 const PORT = process.env.PORT || 3007;
+
+app.use(cors());
 
 app.use(bodyParser.json());
 

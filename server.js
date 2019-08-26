@@ -23,6 +23,18 @@ app.get("/rankings", (request, response) => {
   });
 });
 
+app.post("/file-upload", (request, response) => {
+  console.log(request.body);
+  const fileData = '\n' + request.body.file;
+  fs.appendFile('test.txt', fileData, (error)=>{
+    if(error) {
+      response.status(500).send('error');
+    } else {
+      response.status(200).send('success :)');
+    }
+  });
+});
+
 app.listen(3007, () => {
   console.log(`App listening on ${PORT}`);
 });
@@ -81,6 +93,5 @@ function formatFile(data) {
 
   }
 
-  console.log(rankings);
   return rankings;
 }

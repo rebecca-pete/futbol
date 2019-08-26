@@ -1,13 +1,12 @@
 "use strict";
 
-require("dotenv").config();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const express = require("express");
 const fs = require("fs");
 
 const app = express();
-const PORT = process.env.PORT || 3007;
+const PORT = 3007;
 
 app.use(cors());
 
@@ -60,6 +59,7 @@ function formatFile(data) {
     } else {
       // team two won, update their score by 3
       teamOneScore = 0;
+
       teamTwoScore = 3;
       
     }

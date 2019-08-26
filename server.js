@@ -1,11 +1,15 @@
 "use strict";
 
 require("dotenv").config();
-const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
+const express = require("express");
 const fs = require("fs");
+
 const app = express();
 const PORT = process.env.PORT || 3007;
+
+app.use(cors());
 
 app.use(bodyParser.json());
 
@@ -16,6 +20,18 @@ app.get("/rankings", (request, response) => {
     }
     const dataJSON = formatFile(data);
     response.json(dataJSON);
+  });
+});
+
+app.post("/file-upload", (request, response) => {
+  console.log(request.body);
+  const fileData = '\n' + request.body.file;
+  fs.appendFile('test.txt', fileData, (error)=>{
+    if(error) {
+      response.status(500).send('error');
+    } else {
+      response.status(200).send('success :)');
+    }
   });
 });
 
@@ -77,6 +93,5 @@ function formatFile(data) {
 
   }
 
-  console.log(rankings);
   return rankings;
 }

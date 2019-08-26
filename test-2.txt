@@ -1,0 +1,3 @@
+Paris Saint Germain:3,Liverpool:5
+Real Madrid:3,Barcelona:5
+Arsenal:3,Barcelona:4
